@@ -1,20 +1,25 @@
 {
   "version": 2,
-  "buildCommand": "cd client && npm install && npm run build",
-  "outputDirectory": "client/dist",
-  "functions": {
-    "api/index.js": {
-      "maxDuration": 30
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static-build"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/index.js"
+      "dest": "/api/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/client/dist/$1"
+      "dest": "/dist/$1"
     }
-  ]
+  ],
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "vercel-node@18",
+      "maxDuration": 30
+    }
+  }
 }
