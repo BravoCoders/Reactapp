@@ -2,24 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.html",
-      "use": "@vercel/static-build"
+      "src": "index.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/dist/$1"
+      "dest": "index.js"
     }
-  ],
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "vercel-node@18",
-      "maxDuration": 30
-    }
-  }
+  ]
 }
