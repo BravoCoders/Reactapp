@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(222, 84%, 15%);
+  --muted: hsl(210, 40%, 96%);
+  --muted-foreground: hsl(215, 16%, 47%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(222, 84%, 15%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(222, 84%, 15%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --primary: hsl(142, 76%, 36%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(210, 100%, 45%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --accent: hsl(45, 100%, 51%);
+  --accent-foreground: hsl(222, 84%, 15%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --success: hsl(142, 71%, 45%);
+  --warning: hsl(38, 92%, 50%);
+  --error: hsl(0, 84%, 60%);
+  --ring: hsl(142, 76%, 36%);
+  --radius: 0.875rem;
+  --surface: hsl(0, 0%, 98%);
+  --on-surface: hsl(222, 84%, 15%);
+  --gradient-primary: linear-gradient(135deg, hsl(142, 76%, 36%), hsl(142, 76%, 42%));
+  --gradient-secondary: linear-gradient(135deg, hsl(210, 100%, 45%), hsl(210, 100%, 52%));
+  --gradient-weather: linear-gradient(135deg, hsl(210, 100%, 45%), hsl(195, 100%, 50%));
+  --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-large: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.dark {
+  --background: hsl(222, 84%, 4.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(217, 32%, 17.5%);
+  --muted-foreground: hsl(215, 20.2%, 65.1%);
+  --popover: hsl(222, 84%, 4.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(222, 84%, 4.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(217, 32%, 17.5%);
+  --input: hsl(217, 32%, 17.5%);
+  --primary: hsl(142, 76%, 36%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(210, 100%, 45%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --accent: hsl(45, 100%, 51%);
+  --accent-foreground: hsl(222, 84%, 4.9%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --success: hsl(142, 71%, 45%);
+  --warning: hsl(38, 92%, 50%);
+  --error: hsl(0, 84%, 60%);
+  --ring: hsl(142, 76%, 36%);
+  --surface: hsl(222, 84%, 4.9%);
+  --on-surface: hsl(0, 0%, 98%);
+  --gradient-primary: linear-gradient(135deg, hsl(142, 76%, 36%), hsl(142, 76%, 42%));
+  --gradient-secondary: linear-gradient(135deg, hsl(210, 100%, 45%), hsl(210, 100%, 52%));
+  --gradient-weather: linear-gradient(135deg, hsl(210, 100%, 45%), hsl(195, 100%, 50%));
+  --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --shadow-large: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    background-color: hsl(var(--surface));
+    color: hsl(var(--on-surface));
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .glass-effect {
+    backdrop-filter: blur(16px) saturate(180%);
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .dark .glass-effect {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-weather {
+    background: var(--gradient-weather);
+  }
+  
+  .chat-bubble-user {
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-soft);
+    border-radius: 1.5rem 1.5rem 0.375rem 1.5rem;
+  }
+  
+  .chat-bubble-ai {
+    background: linear-gradient(135deg, hsl(var(--muted)), hsl(210, 40%, 92%));
+    box-shadow: var(--shadow-soft);
+    border: 1px solid hsl(var(--border));
+    border-radius: 1.5rem 1.5rem 1.5rem 0.375rem;
+  }
+  
+  .dark .chat-bubble-ai {
+    background: linear-gradient(135deg, hsl(var(--muted)), hsl(217, 32%, 20%));
+    border: 1px solid hsl(var(--border));
+  }
+  
+  .voice-pulse {
+    animation: voice-pulse 2s infinite;
+  }
+  
+  .floating-action {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-large);
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  .slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+  
+  @keyframes voice-pulse {
+    0%, 100% { 
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+    }
+    50% { 
+      transform: scale(1.05);
+      box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(100%); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .text-primary {
+    color: hsl(var(--primary));
+  }
+  
+  .text-secondary {
+    color: hsl(var(--secondary));
+  }
+  
+  .text-accent {
+    color: hsl(var(--accent));
+  }
+  
+  .text-success {
+    color: hsl(var(--success));
+  }
+  
+  .text-warning {
+    color: hsl(var(--warning));
+  }
+  
+  .text-error {
+    color: hsl(var(--error));
+  }
+  
+  .bg-primary {
+    background-color: hsl(var(--primary));
+  }
+  
+  .bg-secondary {
+    background-color: hsl(var(--secondary));
+  }
+  
+  .bg-accent {
+    background-color: hsl(var(--accent));
+  }
+  
+  .bg-success {
+    background-color: hsl(var(--success));
+  }
+  
+  .bg-warning {
+    background-color: hsl(var(--warning));
+  }
+  
+  .bg-error {
+    background-color: hsl(var(--error));
+  }
+  
+  .bg-surface {
+    background-color: hsl(var(--surface));
+  }
+}
